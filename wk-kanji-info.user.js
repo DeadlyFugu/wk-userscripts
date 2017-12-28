@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WaniKani Kanji Info
 // @namespace    wk-kanji-info
-// @version      1.0
+// @version      1.1
 // @description  Add more info to WaniKani's Kanji!
 // @author       DeadlyFugu
 // @include     *://www.wanikani.com/kanji/*
@@ -29,8 +29,8 @@ const gradeName = ["一年", "二年", "三年", "四年", "五年", "六年", u
 
         if (info != undefined) {
             // set grade, freq, and jlpt information
-            const sectionInformation = $("section#information");
-            sectionInformation.html("<div class=\"row remove-margin-bottom\"><div class=\"span6 remove-margin-bottom\">" + sectionInformation.html() + "</div><div class=\"span6 remove-margin-bottom\"><div class=\"alternative-meaning\"><h2>School Grade</h2><p class=\"remove-margin-bottom\">" + grade + "</p></div><div class=\"alternative-meaning\"><h2>Frequency</h2><p class=\"remove-margin-bottom\">" + freq + "</p></div><div class=\"alternative-meaning\"><h2>JLPT</h2><p class=\"remove-margin-bottom\">" + jlpt + "</p></div></div></div>");
+            $("section#information > div").wrapAll("<div class=\"row remove-margin-bottom\"><div class=\"span6 remove-margin-bottom\"></div></div>");
+            $("section#information div.span6").after("<div class=\"span6 remove-margin-bottom\"><div class=\"alternative-meaning\"><h2>School Grade</h2><p class=\"remove-margin-bottom\">" + grade + "</p></div><div class=\"alternative-meaning\"><h2>Frequency</h2><p class=\"remove-margin-bottom\">" + freq + "</p></div><div class=\"alternative-meaning\"><h2>JLPT</h2><p class=\"remove-margin-bottom\">" + jlpt + "</p></div></div>");
 
             // update readings
             const sectionListing = $("section#note-reading").parent().parent();
